@@ -1,0 +1,90 @@
+:root {
+
+    --blue: #2748EF;
+    --blue-25: #F2F8FF;
+    --blue-50: #E2EFFF;
+    --blue-75: #DDECFF;
+    --blue-100: #C5DFFF;
+    --blue-200: #A8D0FF;
+    --blue-300: #7EB9FF;
+    --blue-400: #64AAFF;
+    --blue-500: #509FFF;
+    --blue-600: var(--blue);
+    --blue-700: #006AE9;
+    --blue-800: #001D93;
+    --blue-900: #000F5D;
+
+
+  
+    --green: #000000;
+    --green-50: #9FFFE1;
+    --green-100: #8BFFDA;
+    --green-200: #62FFCE;
+    --green-300: #39FFC1;
+    --green-400: #10FFB4;
+    --green-500: #00E69E;
+    --green-600: var(--green);
+    --green-700: #009566;
+    --green-800: #006C4A;
+    --green-900: #003424;
+    --green-950: #001810;
+
+    --yellow: #FEDB25;
+    --yellow-25: #FFFCEE;
+    --yellow-50: #FFF8DD;
+    --yellow-75: #FFF5CC;
+    --yellow-100: #FFF2BB;
+    --yellow-200: #FFEFAA;
+    --yellow-300: #FFEB98;
+    --yellow-400: #FFE887;
+    --yellow-500: #FFE576;
+    --yellow-600: var(--yellow);
+    --yellow-700: #F8C719;
+    --yellow-800: #EBB700;
+    --yellow-900: #E1B000;
+
+    --orange: #FF7D1A;
+    --orange-25: #FFF1E6;
+    --orange-50: #FFE2CC;
+    --orange-75: #FFD4B3;
+    --orange-100: #FFC599;
+    --orange-200: #FFB780;
+    --orange-300: #FFA867;
+    --orange-400: #FF9A4D;
+    --orange-500: #FF8B34;
+    --orange-600: var(--orange);
+    --orange-700: #FF6E01;
+    --orange-800: #E66301;
+    --orange-900: #CC5801;
+
+    --gray: #4A4754;
+    --gray-50: #ECECEF;
+    --gray-100:#DAD8DE; 
+    --gray-200: #B4B2BE;
+    --gray-300: #8F8B9D;
+    --gray-400: #6B677A;
+    --gray-500: #4A4754;
+    --gray-600: #3A3842;
+    --gray-700: #2C2A32;
+    --gray-800: #1D1C21;
+    --gray-900: #0F0E11;
+
+    --red: #F53E3E;
+    --red-25: #FEEAEA;
+    --red-50: #FDD4D4;
+    --red-75: #FCBFBF;
+    --red-100: #FBA9A9;
+    --red-200: #FA9494;
+    --red-300: #F87E7F;
+    --red-400: #F76969;
+    --red-500: #F65354;
+    --red-600: var(--red);
+    --red-700: #F42829;
+    --red-800: #DC2425;
+    --red-900: #C32021;
+
+  
+    --black: #000000;
+    --white: #FFFFFF;
+    --transparent: transparent;
+}

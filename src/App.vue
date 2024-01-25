@@ -11,11 +11,7 @@ import Button from "@/components/Button/index.vue";
     </Button>
 
     <hr class="my-6">
-    <Button
-        variant="info"
-    >
-      button info
-    </Button>
+   
 
     <hr class="my-6">
     <Button
@@ -23,6 +19,24 @@ import Button from "@/components/Button/index.vue";
     >
       button primary
     </Button>
+    <Button
+    variant="warning">
+    button warning
+    </Button>
+    <Button
+    variant="danger">
+    button danger
+    </Button>
+    
+    <Button
+    variant="gray">
+    button gray
+    </Button>
+    <Button
+    variant="success">
+    button success
+    </Button>
+    
 
     <hr class="my-6">
 
