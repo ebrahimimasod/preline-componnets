@@ -1,10 +1,12 @@
-<script setup xmlns="http://www.w3.org/1999/html">
+<script setup>
+import Icon from "@/components/Icon/index.vue"
 import {defineProps, defineEmits, computed, ref, useSlots, onMounted} from 'vue'
 
 const slots = useSlots();
-const emits = defineEmits("update:modelValue")
+const emits = defineEmits(["update:modelValue"])
 const props = defineProps([
   'placeholder',
+  'variant',
   'type',
   'modelValue',
   "label",
@@ -13,23 +15,30 @@ const props = defineProps([
   "grayInput",
   'floating',
   "icon",
-  "pilled"
+  "pilled",
 ]);
 
 
 const InputClasses = computed(() => {
-  const classes = ["inputStyle pl-[50px]"];
+  const classes = ["input"];
 
   if (props.basic) {
     classes.push("basic");
   }
+
+
   classes.push(props.size);
-if(props.floating){
-  classes .push("floating")
-}
-if(props.pilled){
-  classes.push("pilled")
-}
+  classes.push(props.variant)
+
+  if (props.floating) {
+    classes.push("floating")
+  }
+
+
+  if (props.pilled) {
+    classes.push("pilled")
+  }
+
   return classes;
 });
 
@@ -37,60 +46,64 @@ if(props.pilled){
 const inputComputed = computed({
   get() {
     return props.modelValue
-    console.log(props.modelValue)
-
   },
   set(value) {
     emits('update:modelValue', value, props.modelValue = "")
   }
 })
 
-onMounted(() => {
-  console.log({slots});
-});
 
 </script>
+
 <template>
-  <div class="flex flex-col">
+  <div class="input-wrapper">
+
     <slot v-if="slots.label" name="label"/>
     <label v-else-if="label" class="mb-2">{{ label }}</label>
 
-    <input :type="type" :class="InputClasses" :placeholder="placeholder" v-model="inputComputed"/>
-    <div v-if="slots.icon" class="absolute mt-2 ml-2">
-      <slot name="icon"/>
+    <div class="relative">
+      <input :type="type" :class="InputClasses" :placeholder="placeholder" v-model="inputComputed"/>
+
+      <div v-if="slots.icon" class="absolute left-3 bottom-0 top-0 flex items-center">
+        <slot name="icon"/>
+      </div>
+
+      <div v-if="variant === 'danger'" class="absolute right-3 bottom-0 top-0 flex items-center">
+        <Icon name="AlertCircle" color="red"/>
+      </div>
+
     </div>
+   <div  v-if="slots.message" class="mt-1">
+     <slot name="message"/>
+   </div>
 
   </div>
 </template>
+
 <style scoped>
-.inputStyle.basic {
+
+.input-wrapper {
+  @apply flex flex-col;
+}
+
+.input.basic {
   @apply relative pl-[40px] py-3 px-4 w-96 border border-gray-200 rounded-lg text-sm focus:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400;
 }
 
-.inputStyle.sm {
+.input.sm {
   @apply py-2 px-3
 }
 
-.inputStyle.md {
+.input.md {
   @apply py-3 px-4
 }
 
-.inputStyle.lg {
+.input.lg {
   @apply p-4 sm:p-5
 }
 
-.inputStyle.grayInput {
-  @apply py-3 pe-0 ps-8 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm
-  focus:border-t-transparent focus:border-x-transparent
-  focus:border-b-blue-500 focus:ring-0 disabled:opacity-50
-  disabled:pointer-events-none dark:border-b-gray-700
-  dark:text-gray-400 dark:focus:ring-gray-600
-  dark:focus:border-b-gray-600;
-}
-
-.inputStyle.floating {
+.input.floating {
   @apply
-
   pl-[40px] py-3 px-4 w-96 border border-gray-200 rounded-lg text-sm  placeholder:text-transparent
   focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600
   focus:pt-6
@@ -101,8 +114,11 @@ onMounted(() => {
   autofill:pb-2;
 }
 
-.inputStyle.pilled{
+.input.pilled {
   @apply py-3 px-4 w-96 border border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600;
 }
 
+.input.danger {
+  @apply pl-[40px] py-3 px-4 w-96 border-2 border-danger-500  focus:border-danger-500 focus:ring-blue-500   rounded-lg text-sm  placeholder:text-transparent;
+}
 </style>

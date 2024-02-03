@@ -14,10 +14,10 @@ import Icon from "@/components/Icon/index.vue"
       <h2 class="mb-4 font-semibold text-2xl">Colors Variant</h2>
 
       <div class="flex items-center  justify-start">
+
         <Button class="ml-2" variant="secondary">
           button secondary
         </Button>
-
         <Button class="ml-2" variant="primary">
           button primary
         </Button>
@@ -27,7 +27,6 @@ import Icon from "@/components/Icon/index.vue"
         <Button class="ml-2" variant="danger">
           button danger
         </Button>
-
         <Button class="ml-2" variant="gray">
           button gray
         </Button>
@@ -63,18 +62,10 @@ import Icon from "@/components/Icon/index.vue"
       <h2 class="mb-4  ml-2 font-semibold text-2xl">Outlined</h2>
 
       <div class="flex items-center  justify-start  ">
-        <Button
-            outlined="true"
-
-        >
+        <Button outlined="true">
           Button outlined default
         </Button>
-
-
-        <Button class="mr-3"
-                outlined="true"
-                variant="primary"
-        >
+        <Button class="mr-3" outlined="true" variant="primary">
 
           Button outlined primary
         </Button>
@@ -102,8 +93,6 @@ import Icon from "@/components/Icon/index.vue"
 
           Button outlined warning
         </Button>
-
-
       </div>
 
     </div>
@@ -125,7 +114,7 @@ import Icon from "@/components/Icon/index.vue"
           Button outlined success
         </Button>
 
-        <Button :ghost="true"
+        <Button ghost="true"
                 variant="danger">
           Button outlined danger
         </Button>
@@ -145,7 +134,7 @@ import Icon from "@/components/Icon/index.vue"
 
       <div class="flex items-center  justify-start">
         <Button class="ml-2"
-                :link="true"
+                link="true"
                 variant="primary">
           button primary
         </Button>
@@ -197,9 +186,9 @@ import Icon from "@/components/Icon/index.vue"
         >
           button Icon
 
-          <Icon name="camera" />
+          <Icon name="camera"/>
 
-<!--          <Camera/>-->
+          <!--          <Camera/>-->
         </Button>
 
       </div>
@@ -207,6 +196,93 @@ import Icon from "@/components/Icon/index.vue"
 
     </div>
 
+    <!-- loading -->
 
+    <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
+      <h2 class="mb-4 font-semibold text-2xl">loading</h2>
+
+      <div class="flex items-center  justify-start">
+        <Button class="ml-2"
+
+                :loading="true"
+                variant="secondary"
+        >
+        <span
+            class="animate-spin inline-block w-4 h-4 border-[3px] border-current border-t-transparent text-white rounded-full">
+ <span class="sr-only">Loading...</span>
+        </span>
+        </Button>
+
+        <Button class="ml-2"
+                :a="true"
+                variant="primary">
+
+
+<span
+    class="animate-spin inline-block w-4 h-4 border-[3px] border-current border-t-transparent text-white rounded-full">
+        </span>
+          <label>Loading...</label>
+        </Button>
+
+      </div>
+
+    </div>
+    <!-- Disabled -->
+    <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
+      <h2 class="mb-4 font-semibold text-2xl">Disable</h2>
+
+      <div class="flex items-center  justify-start">
+        <Button class="ml-2"
+                disabled="true"
+                variant="primary"
+        >
+          <label>Solid</label>
+
+        </Button>
+        <Button class="ml-2"
+                outlined="true"
+                variant="gray"
+                disabled="true"
+        >
+          outline
+        </Button>
+        <Button class="mr-2"
+                ghost="true"
+                variant="gray"
+                disabled
+        >
+          ghost
+
+        </Button>
+        <Button class="ml-2"
+                disabled
+                link="true"
+                variant="gray"
+        >
+          Linke
+        </Button>
+        <Button class="ml-2"
+                outlined="true"
+                variant="gray"
+                disabled>
+          While
+
+        </Button>
+
+      </div>
+    </div>
+    <!-- Button examples -->
+    <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
+      <h2 class="mb-4 font-semibold text-2xl">Button examples</h2>
+      <div class="flex items-center  justify-start">
+        <Button class="ml-2"
+                outlined="true"
+                variant="gray"
+        >
+          <Icon name="thumbsUp"/>
+          <Icon name="thumbsDown"/>
+        </Button>
+      </div>
+    </div>
   </div>
 </template>

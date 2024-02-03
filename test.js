@@ -12,13 +12,10 @@ const icons = {
         svg_path:"folan minus",
     }
 }
-
 const props = {
     name: "user",
     color: "red"
 }
-
-
 const icon = icons[props.name] // for object
 // const icon = icons.find(i=>i.) // for array
 

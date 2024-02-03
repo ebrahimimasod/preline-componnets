@@ -24,6 +24,7 @@ const inputValue = ref()
 
       </div>
     </div>
+
     <!-- size -->
     <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4 font-semibold text-2xl">Size</h2>
@@ -74,7 +75,6 @@ const inputValue = ref()
              :icon="true"
              variant="gray"
              basic="true">
-
         <template #icon>
             <Icon name="user"/>
         </template>
@@ -122,8 +122,6 @@ const inputValue = ref()
         </template>
       </Input>
     </div>
-
-
   </div>
   <!--Pilled input-->
   <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
@@ -131,12 +129,40 @@ const inputValue = ref()
 
     <div class="flex items-center  justify-start">
       <Input variant="gray"
-             label="input text"
              pilled="true"
              v-model="inputValue"
-             type="text"/>
+             type="text"
+      placeholder="Input Text ">
+
+      </Input>
+    </div>
 
 
     </div>
+  <!--Validation states-->
+  <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
+    <h2 class="mb-4 font-semibold text-2xl">Validation states</h2>
+
+    <div class="flex items-center  justify-start">
+      <Input variant="danger"  >
+        <template #label >
+          <p>
+            Email
+          </p>
+        </template>
+        <template #icon>
+          <Icon  name="user"/>
+        </template>
+        <template #message>
+          <small class="ext-sm text-red-600">Please enter a valid email address. </small>
+        </template>
+      </Input>
+    </div>
+
+    <div class="flex items-center  justify-start">
+
+    </div>
   </div>
+
+
 </template>
