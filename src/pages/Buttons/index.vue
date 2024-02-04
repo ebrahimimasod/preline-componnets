@@ -5,7 +5,6 @@ import Icon from "@/components/Icon/index.vue"
 
 </script>
 
-
 <template>
   <div>
 
@@ -35,6 +34,8 @@ import Icon from "@/components/Icon/index.vue"
         </Button>
       </div>
     </div>
+
+
     <!-- Size -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4 font-semibold text-2xl">Size</h2>
@@ -55,20 +56,22 @@ import Icon from "@/components/Icon/index.vue"
       </div>
 
     </div>
+
+
     <!-- Outlined -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4  ml-2 font-semibold text-2xl">Outlined</h2>
 
       <div class="flex items-center  justify-start  ">
-        <Button outlined="true">
+        <Button outlined>
           Button outlined default
         </Button>
-        <Button class="ml-3 mr-3" :outlined="true" variant="primary">
+        <Button class="ml-3 mr-3" outlined variant="primary">
 
           Button outlined primary
         </Button>
         <Button class="mr-3"
-                outlined="true"
+                outlined
                 variant="success"
 
         >
@@ -76,7 +79,7 @@ import Icon from "@/components/Icon/index.vue"
           Button outlined success
         </Button>
         <Button
-            outlined="true"
+            outlined
             variant="danger"
 
         >
@@ -84,34 +87,36 @@ import Icon from "@/components/Icon/index.vue"
           Button outlined danger
         </Button>
         <Button
-            outlined="true"
+            outlined
             variant="warning"
         >
           Button outlined warning
         </Button>
       </div>
     </div>
+
+
     <!-- Ghost -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4  ml-2 font-semibold text-2xl">Ghost</h2>
 
       <div class="flex items-center  justify-start  ">
-        <Button class="mr-2">
+        <Button class="mr-2" ghost>
           Button outlined success
         </Button>
-        <Button :ghost="true" variant="primary">
+        <Button ghost variant="primary">
           Button outlined primary
         </Button>
-        <Button :ghost="true"
+        <Button ghost
                 variant="success">
           Button outlined success
         </Button>
 
-        <Button ghost="true"
+        <Button ghost
                 variant="danger">
           Button outlined danger
         </Button>
-        <Button :ghost="true"
+        <Button ghost
                 variant="warning">
           Button outlined warning
         </Button>
@@ -126,7 +131,7 @@ import Icon from "@/components/Icon/index.vue"
 
       <div class="flex items-center  justify-start">
         <Button class="ml-2"
-                link="true"
+                link
                 variant="primary">
           button primary
         </Button>
@@ -142,7 +147,7 @@ import Icon from "@/components/Icon/index.vue"
       <div class="flex items-center  justify-start">
 
         <Button class="ml-2"
-                :rounded="true"
+                rounded
 
         >
           button rounded default
@@ -189,7 +194,7 @@ import Icon from "@/components/Icon/index.vue"
 
       <div class="flex items-center  justify-start">
         <Button class="ml-2"
-                :block="true"
+                block
                 variant="primary"
         >
           button Block
@@ -199,36 +204,24 @@ import Icon from "@/components/Icon/index.vue"
 
 
     </div>
-    <!-- icon -->
 
 
     <!-- loading -->
-
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4 font-semibold text-2xl">loading</h2>
 
       <div class="flex items-center  justify-start">
-        <Button class="ml-2"
-
-                :loading="true"
-                variant="secondary"
-        >
-        <span
-            class="animate-spin inline-block w-4 h-4 border-[3px] border-current border-t-transparent text-white rounded-full">
- <span class="sr-only">Loading...</span>
-        </span>
+        <Button class="ml-2" loading  >
+          button loading
         </Button>
 
-        <Button class="ml-2"
-                :a="true"
-                variant="primary">
-
-
-<span
-    class="animate-spin inline-block w-4 h-4 border-[3px] border-current border-t-transparent text-white rounded-full">
-        </span>
-          <label>Loading...</label>
+        <Button class="ml-2" loading variant="primary"   >
+          button loading
+          <span>
+            icon
+          </span>
         </Button>
+
 
       </div>
 
@@ -239,36 +232,35 @@ import Icon from "@/components/Icon/index.vue"
 
       <div class="flex items-center  justify-start">
         <Button class="ml-2"
-                disabled="true"
+                disabled
                 variant="primary"
         >
           <label>Solid</label>
 
         </Button>
         <Button class="ml-2"
-                outlined="true"
+                outlined
                 variant="gray"
-                disabled="true"
+                disabled
         >
           outline
         </Button>
-        <Button class="mr-2"
-                ghost="true"
-                variant="gray"
+        <Button class="ml-2"
+                ghost
+
                 disabled
         >
           ghost
 
         </Button>
-        <Button class="ml-2"
-                disabled
-                link="true"
-                variant="gray"
-        >
-          Linke
+        <Button
+            class="ml-2"
+            ghost
+            disabled>
+          floading
         </Button>
         <Button class="ml-2"
-                outlined="true"
+                outlined
                 variant="gray"
                 disabled>
           While

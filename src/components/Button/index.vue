@@ -1,20 +1,74 @@
 <script setup>
 import {defineProps, computed} from "vue";
 
-const props = defineProps([
-  "type",
-  "variant",
-  "size",
-  "outlined",
-  "ghost",
-  "link",
-  "rounded",
-  "block",
-  "icon",
-  "loading",
-  "a",
-  "disabled",
-]);
+// const props = defineProps([
+//   "type", // string (submit OR button)
+//   "variant", //string (primary, success, danger, warning, default)
+//   "size",
+//   "outlined",//boolean
+//   "ghost",//boolean
+//   "link",//boolean
+//   "rounded",//boolean
+//   "block",//boolean
+//   "icon",//boolean
+//   "loading",//boolean
+//   "a",
+//   "disabled",//boolean
+// ]);
+
+
+const props = defineProps({
+  type: {
+    type: String,
+    default: 'button',
+  },
+  variant: {
+    type: String,
+    default: 'default', //(primary, success, danger, warning, default)
+    // validator(value, props) {
+    //   const variants = ['primary', 'success', 'danger', 'warning', 'default'];
+    //   if(!variants.includes(value)){
+    //     console.log('error')
+    //   }
+    // }
+  },
+  size: {
+    type: String,
+  },
+  outlined: {
+    type: Boolean,
+    default: false,
+  },
+  ghost: {
+    type: Boolean,
+    default: false,
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+  link: {
+    type: Boolean,
+    default: false,
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
+  block: {
+    type: Boolean,
+    default: false,
+  },
+  icon: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 
 const btnClasses = computed(() => {
 
@@ -79,6 +133,7 @@ const btnClasses = computed(() => {
 <style scoped>
 
 .btn {
+  outline: none !important;
   @apply py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 ;
 }
 
@@ -111,7 +166,7 @@ const btnClasses = computed(() => {
 }
 
 .btn.outlined.primary {
-  @apply  border bg-transparent  border-blue-600 text-blue-600 hover:border-blue-500 hover:text-blue-500 disabled:opacity-50 disabled:pointer-events-none;
+  @apply border bg-transparent  border-blue-600 text-blue-600 hover:border-blue-500 hover:text-blue-500 disabled:opacity-50 disabled:pointer-events-none;
 }
 
 .btn.outlined.success {
@@ -135,7 +190,7 @@ const btnClasses = computed(() => {
 }
 
 .btn.ghost {
-  @apply bg-transparent  text-gray-400   hover:bg-gray-400 disabled:opacity-50 disabled:pointer-events-none;
+  @apply bg-transparent  text-gray-400  hover:bg-gray-100;
 }
 
 .btn.rounded {
@@ -145,16 +200,20 @@ const btnClasses = computed(() => {
 .btn.rounded.primary {
   @apply bg-primary-600 !border-none !text-white hover:bg-primary-500;
 }
-.btn.rounded.warning{
+
+.btn.rounded.warning {
   @apply bg-warning-600 !border-none !text-white hover:bg-warning-500;
 }
-.btn.rounded.danger{
+
+.btn.rounded.danger {
   @apply bg-danger-600 !border-none !text-white hover:bg-danger-500;
 }
-.btn.rounded.gray{
+
+.btn.rounded.gray {
   @apply bg-gray-600 !border-none !text-white hover:bg-gray-500;
 }
-.btn.rounded.success{
+
+.btn.rounded.success {
   @apply bg-green-600 !border-none !text-white hover:bg-green-500;
 }
 
@@ -207,15 +266,24 @@ const btnClasses = computed(() => {
 }
 
 .btn.loading {
-  @apply flex justify-center items-center h-[2.875rem] w-[2.875rem] text-sm font-semibold rounded-lg
-  border border-transparent bg-blue-600 text-white hover:bg-blue-700
-  disabled:opacity-50 disabled:pointer-events-none
-
+  @apply pointer-events-none select-none text-transparent relative;
 }
 
-.btn.a {
-  @apply w-[120px] h-[50px];
+
+.btn.loading::after {
+  @apply animate-spin rounded-full border-white inline-block border-2 border-solid;
+  content: "";
+  border-bottom-color: transparent !important;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
 }
+
 
 .btn.disabled {
   @apply py-3 px-4 inline-flex items-center gap-x-2
@@ -225,16 +293,16 @@ const btnClasses = computed(() => {
 }
 
 
-.btn.icon{
+.btn.icon {
   @apply rounded-full w-9 h-9 bg-white p-2 flex items-center justify-center
 }
 
 
-.btn.icon.outlined{
+.btn.icon.outlined {
   @apply rounded-full w-9 h-9 bg-white p-2 flex items-center justify-center border border-gray-100
 }
 
-.btn.icon.primary{
+.btn.icon.primary {
   @apply rounded-full w-9 h-9 bg-primary-600 p-2 flex items-center justify-center
 }
 

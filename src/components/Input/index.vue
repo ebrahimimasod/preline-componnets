@@ -4,21 +4,56 @@ import {defineProps, defineEmits, computed, ref, useSlots, onMounted} from 'vue'
 
 const slots = useSlots();
 const emits = defineEmits(["update:modelValue"])
-const props = defineProps([
-  'placeholder',
-  'variant',
-  'type',
-  'modelValue',
-  "label",
-  "size",
-  "basic",
-  "grayInput",
-  'floating',
-  "icon",
-  "pilled",
-]);
+//const props1 = defineProps([
+  //'placeholder',
+  //'variant',
+  //'type',
+  //'modelValue',
+  //"label",
+  //"size",
+  //"basic",
+  //"grayInput",
+  //'floating',
+  //"icon",
+  //"rounded",
+//]);
 
+const props=defineProps({
+      placeholder:{
+      type: String
+      },
+      variant: {
+        type: String,
+        default: 'default'
+      },
+      type: {
+        type: String,
+        default: 'input',
+      },
+      label: {
+        type: String
+      },
 
+      basic:{
+        type:Boolean,
+        default:false
+      },
+      size:{
+        type:String
+      },
+      floating:{
+        type:Boolean,
+        default:false
+      },
+      icon: {
+        type: String
+      },
+      rounded:{
+        type:  Boolean,
+        default:false
+      }
+},
+)
 const InputClasses = computed(() => {
   const classes = ["input"];
 
@@ -35,8 +70,8 @@ const InputClasses = computed(() => {
   }
 
 
-  if (props.pilled) {
-    classes.push("pilled")
+  if (props.rounded) {
+    classes.push("rounded")
   }
 
   return classes;
@@ -67,7 +102,6 @@ const inputComputed = computed({
       <div v-if="slots.icon" class="absolute left-3 bottom-0 top-0 flex items-center">
         <slot name="icon"/>
       </div>
-
       <div v-if="variant === 'danger'" class="absolute right-3 bottom-0 top-0 flex items-center">
         <Icon name="AlertCircle" color="red"/>
       </div>
@@ -97,23 +131,13 @@ const inputComputed = computed({
 .input.md {
   @apply py-3 px-4
 }
-
 .input.lg {
   @apply p-4 sm:p-5
 }
-
 .input.floating {
-  @apply
-  pl-[40px] py-3 px-4 w-96 border border-gray-200 rounded-lg text-sm  placeholder:text-transparent
-  focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600
-  focus:pt-6
-  focus:pb-2
-  [&:not(:placeholder-shown)]:pt-6
-  [&:not(:placeholder-shown)]:pb-2
-  autofill:pt-6
-  autofill:pb-2;
+
 }
-.input.pilled {
+.input.rounded {
   @apply py-3 px-4 w-96 border border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600;
 }
 

@@ -19,7 +19,7 @@ const inputValue = ref()
       <h2 class="mb-4 font-semibold text-2xl">Basic</h2>
 
       <div class="flex items-center  justify-start">
-        <Input variant="gray" basic="true" v-model="inputValue" type="text"/>
+        <Input variant="gray" basic v-model="inputValue" type="text"/>
         {{ inputValue }}
 
       </div>
@@ -29,7 +29,7 @@ const inputValue = ref()
     <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4 font-semibold text-2xl">Size</h2>
       <div class="flex items-center  justify-start">
-        <Input variant="gray" placeholder="small size" basic="true" v-model="inputValue" type="text" size="sm"/>
+        <Input variant="gray" placeholder="small size" :basic="true" v-model="inputValue" type="text" size="sm"/>
         {{ inputValue }}
 
       </div>
@@ -102,7 +102,7 @@ const inputValue = ref()
 
     <div class="flex items-center  justify-start">
 
-      <Input  variant="gray" floating="true">
+      <Input  variant="gray" floating>
         <template #label >
           <p>
             email
@@ -123,13 +123,13 @@ const inputValue = ref()
       </Input>
     </div>
   </div>
-  <!--Pilled input-->
+  <!--rounded input-->
   <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
-    <h2 class="mb-4 font-semibold text-2xl">Pilled input</h2>
+    <h2 class="mb-4 font-semibold text-2xl">rounded input</h2>
 
     <div class="flex items-center  justify-start">
       <Input variant="gray"
-             pilled="true"
+             rounded
              v-model="inputValue"
              type="text"
       placeholder="Input Text ">
