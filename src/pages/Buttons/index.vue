@@ -33,9 +33,7 @@ import Icon from "@/components/Icon/index.vue"
         <Button class="ml-2" variant="success">
           button success
         </Button>
-
       </div>
-
     </div>
     <!-- Size -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
@@ -65,7 +63,7 @@ import Icon from "@/components/Icon/index.vue"
         <Button outlined="true">
           Button outlined default
         </Button>
-        <Button class="mr-3" outlined="true" variant="primary">
+        <Button class="ml-3 mr-3" :outlined="true" variant="primary">
 
           Button outlined primary
         </Button>
@@ -75,7 +73,7 @@ import Icon from "@/components/Icon/index.vue"
 
         >
 
-          Button outlined green
+          Button outlined success
         </Button>
         <Button
             outlined="true"
@@ -88,13 +86,10 @@ import Icon from "@/components/Icon/index.vue"
         <Button
             outlined="true"
             variant="warning"
-
         >
-
           Button outlined warning
         </Button>
       </div>
-
     </div>
     <!-- Ghost -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
@@ -104,11 +99,9 @@ import Icon from "@/components/Icon/index.vue"
         <Button class="mr-2">
           Button outlined success
         </Button>
-
         <Button :ghost="true" variant="primary">
           Button outlined primary
         </Button>
-
         <Button :ghost="true"
                 variant="success">
           Button outlined success
@@ -122,7 +115,6 @@ import Icon from "@/components/Icon/index.vue"
                 variant="warning">
           Button outlined warning
         </Button>
-
 
       </div>
 
@@ -143,16 +135,48 @@ import Icon from "@/components/Icon/index.vue"
 
 
     </div>
-    <!-- Pilled -->
+    <!-- Rounded -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
-      <h2 class="mb-4 font-semibold text-2xl">Pilled</h2>
+      <h2 class="mb-4 font-semibold text-2xl">Rounded</h2>
 
       <div class="flex items-center  justify-start">
+
         <Button class="ml-2"
-                :Pilled="true"
+                :rounded="true"
+
+        >
+          button rounded default
+        </Button>
+
+        <Button class="ml-2"
+                :rounded="true"
                 variant="primary"
         >
-          button Pilled
+          button rounded primary
+        </Button>
+        <Button class="ml-2"
+                :rounded="true"
+                variant="warning"
+        >
+          button rounded warning
+        </Button>
+        <Button class="ml-2"
+                :rounded="true"
+                variant="danger"
+        >
+          button rounded danger
+        </Button>
+        <Button class="ml-2"
+                :rounded="true"
+                variant="gray"
+        >
+          button rounded gray
+        </Button>
+        <Button class="ml-2"
+                :rounded="true"
+                variant="success"
+        >
+          button rounded success
         </Button>
 
       </div>
@@ -176,25 +200,7 @@ import Icon from "@/components/Icon/index.vue"
 
     </div>
     <!-- icon -->
-    <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
-      <h2 class="mb-4 font-semibold text-2xl">Icon</h2>
 
-      <div class="flex items-center  justify-start">
-        <Button class="ml-2"
-                :icon="true"
-                variant="primary"
-        >
-          button Icon
-
-          <Icon name="camera"/>
-
-          <!--          <Camera/>-->
-        </Button>
-
-      </div>
-
-
-    </div>
 
     <!-- loading -->
 
@@ -271,17 +277,33 @@ import Icon from "@/components/Icon/index.vue"
 
       </div>
     </div>
-    <!-- Button examples -->
+    <!-- Button Icons -->
     <div class="p-10   border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
-      <h2 class="mb-4 font-semibold text-2xl">Button examples</h2>
+      <h2 class="mb-4 font-semibold text-2xl">Button Icons</h2>
       <div class="flex items-center  justify-start">
-        <Button class="ml-2"
-                outlined="true"
-                variant="gray"
+
+        <Button
+            class="ml-2"
+            :icon="true"
         >
-          <Icon name="thumbsUp"/>
-          <Icon name="thumbsDown"/>
+          <Icon name="thumbsUp" size="20"/>
         </Button>
+
+
+        <Button class="ml-2"
+                :icon="true"
+                :outlined="true"
+        >
+          <Icon name="thumbsUp" size="20"/>
+        </Button>
+
+        <Button class="ml-2"
+                :icon="true"
+                variant="primary"
+        >
+          <Icon name="thumbsUp" size="20"/>
+        </Button>
+
       </div>
     </div>
   </div>
