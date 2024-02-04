@@ -143,13 +143,13 @@ const btnClasses = computed(() => {
 }
 
 .btn.rounded.primary {
-  @apply bg-primary-600 !border-none !text-white hover:bg-primary-100;
+  @apply bg-primary-600 !border-none !text-white hover:bg-primary-500;
 }
 .btn.rounded.warning{
-  @apply bg-warning-600 !border-none !text-white hover:bg-warning-100;
+  @apply bg-warning-600 !border-none !text-white hover:bg-warning-500;
 }
 .btn.rounded.danger{
-  @apply bg-danger-600 !border-none !text-white hover:bg-danger-100;
+  @apply bg-danger-600 !border-none !text-white hover:bg-danger-500;
 }
 .btn.rounded.gray{
   @apply bg-gray-600 !border-none !text-white hover:bg-gray-500;
@@ -157,7 +157,6 @@ const btnClasses = computed(() => {
 .btn.rounded.success{
   @apply bg-green-600 !border-none !text-white hover:bg-green-500;
 }
-
 
 .btn.ghost.primary {
   @apply text-primary-600 hover:bg-primary-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400
