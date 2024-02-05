@@ -12,34 +12,31 @@ const inputValue = ref()
 
 <template>
   <div class="w-full">
-
-
-    <!-- Basic -->
-    <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
-      <h2 class="mb-4 font-semibold text-2xl">Basic</h2>
-
-      <div class="flex items-center  justify-start">
-        <Input variant="gray" basic v-model="inputValue" type="text"/>
-        {{ inputValue }}
-
-      </div>
-    </div>
-
+<label>عنوان </label>
+<input basic/>
     <!-- size -->
     <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4 font-semibold text-2xl">Size</h2>
       <div class="flex items-center  justify-start">
-        <Input variant="gray" placeholder="small size" :basic="true" v-model="inputValue" type="text" size="sm"/>
+        <Input
+               placeholder="small size"
+               v-model="inputValue"
+               type="text" size="sm"/>
         {{ inputValue }}
 
       </div>
       <div class="flex items-center  justify-start mt-5">
-        <Input variant="gray" placeholder="Defult size" basic="true" v-model="inputValue" type="text" size="md"/>
+        <Input  placeholder="Defult size"
+               v-model="inputValue" type="text" size="md"/>
         {{ inputValue }}
 
       </div>
       <div class="flex items-center  justify-start mt-5">
-        <Input variant="gray" placeholder="Large size" basic="true" v-model="inputValue" type="text" size="lg"/>
+        <Input
+            placeholder="Large size"
+            v-model="inputValue"
+            type="text"
+            size="lg"/>
         {{ inputValue }}
 
       </div>
@@ -50,19 +47,13 @@ const inputValue = ref()
     <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
       <h2 class="mb-4 font-semibold text-2xl">Label</h2>
 
-      <div class="flex items-center  justify-start">
-        <Input label="test" variant="gray" basic="true"/>
+      <div class="flex items-center justify-start">
+        <Input
+            type="email"
+            placeholder="you@site.com"
+            label="email"/>
       </div>
 
-      <div class="flex items-center  justify-start">
-        <Input variant="gray" basic="true">
-          <template #label>
-            <span>
-              test label
-            </span>
-          </template>
-        </Input>
-      </div>
 
     </div>
   </div>
@@ -74,7 +65,7 @@ const inputValue = ref()
       <Input type="email"
              :icon="true"
              variant="gray"
-             basic="true">
+             basic>
         <template #icon>
             <Icon name="user"/>
         </template>
@@ -82,9 +73,9 @@ const inputValue = ref()
       </Input>
       <div class="flex items-center justify-start">
         <Input type="password"
-               :icon="true"
+               icon
                variant="gray"
-               basic="true">
+               basic>
 
           <template #icon>
             <Icon name="key"/>
@@ -114,7 +105,7 @@ const inputValue = ref()
     <div class="flex items-center  justify-start">
       <Input  type="password"
           variant="gray"
-          floating="true">
+          floating>
         <template #label >
           <p>
             password
@@ -123,28 +114,82 @@ const inputValue = ref()
       </Input>
     </div>
   </div>
+  <!--Disabled-->
+
+  <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
+    <h2 class="mb-4 font-semibold text-2xl">Disabled</h2>
+
+    <div class="flex  items-center justify-start flex-col gap-3">
+      <Input
+          rounded
+          disabled
+          variantDisabled="disabledInput"
+          v-model="inputValue"
+          type="text"
+          placeholder="Input Disabled">
+      </Input>
+      <Input
+          rounded
+          disabled
+          variantDisabled="disabledInput"
+          v-model="inputValue"
+          type="text"
+          placeholder=" Disabled Read only input">
+      </Input>
+
+      <Input
+          variant="gray-fill"
+          disabled
+          type="text"
+          placeholder="Enter name"
+          >
+        <template #icon>
+          <Icon class="pl-0 opacity-50" name="user"/>
+        </template>
+      </Input>
+      <Input
+          variant="gray-fill"
+          disabled
+          type="password"
+          placeholder="Enter password"
+      >
+        <template #icon>
+          <Icon class="pl-0 opacity-50" name="keyRound"/>
+        </template>
+      </Input>
+
+
+
+
+    </div>
+
+  </div>
+
   <!--rounded input-->
   <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
     <h2 class="mb-4 font-semibold text-2xl">rounded input</h2>
 
     <div class="flex items-center  justify-start">
-      <Input variant="gray"
+      <Input
              rounded
              v-model="inputValue"
              type="text"
-      placeholder="Input Text ">
+             placeholder="Input Text ">
 
       </Input>
     </div>
 
 
     </div>
-  <!--Validation states-->
+  <!--Validation status-->
   <div class="p-10 w-1/2  border-[1px] border-gray-100 rounded-lg   m-auto mt-[15px] bg-white shadow-md">
-    <h2 class="mb-4 font-semibold text-2xl">Validation states</h2>
+    <h2 class="mb-4 font-semibold text-2xl">Validation Status</h2>
+    <input type="tel" />
 
-    <div class="flex items-center  justify-start">
-      <Input variant="danger"  >
+    <div class="flex items-center  justify-center flex-col ">
+      <Input
+          type="email"
+          variant="danger">
         <template #label >
           <p>
             Email
@@ -157,6 +202,35 @@ const inputValue = ref()
           <small class="ext-sm text-red-600">Please enter a valid email address. </small>
         </template>
       </Input>
+
+      <Input variant="primary" >
+        <template #label >
+          <p>
+            Email
+          </p>
+        </template>
+        <template #icon>
+          <Icon  name="user"/>
+        </template>
+        <template #message>
+          <small class="ext-sm text-red-600">Please enter a valid email address. </small>
+        </template>
+      </Input>
+      <Input
+          variant="success" >
+        <template #label >
+          <p>
+            Email
+          </p>
+        </template>
+        <template #icon>
+          <Icon  name="user" class="ml-5"/>
+        </template>
+        <template #message>
+          <small class="ext-sm text-green-600">Please enter a valid email address. </small>
+        </template>
+      </Input>
+
 
     </div>
 
