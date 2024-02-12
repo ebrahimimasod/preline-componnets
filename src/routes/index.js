@@ -3,7 +3,7 @@ import {createRouter, createWebHashHistory} from "vue-router";
 
 import ButtonsPage from "@/pages/Buttons/index.vue"
 import InputePages from "@/pages/Inputes/index.vue"
-
+import Select from "@/pages/Selects/index.vue"
 const routes = [
     {
         path: '/buttons',
@@ -14,8 +14,8 @@ const routes = [
         component: InputePages
     },
     {
-        path: '/tw',
-        component: ()=>import("../pages/home.vue")
+        path:'/selects',
+        component:Select
     }
 ];
 

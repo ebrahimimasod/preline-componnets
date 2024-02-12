@@ -157,10 +157,6 @@ const inputValue = ref()
           <Icon class="pl-0 opacity-50" name="keyRound"/>
         </template>
       </Input>
-
-
-
-
     </div>
 
   </div>
@@ -202,7 +198,6 @@ const inputValue = ref()
           <small class="ext-sm text-red-600">Please enter a valid email address. </small>
         </template>
       </Input>
-
       <Input variant="primary" >
         <template #label >
           <p>
