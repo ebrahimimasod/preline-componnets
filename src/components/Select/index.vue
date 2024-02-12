@@ -1,7 +1,6 @@
 <script setup>
 import {computed, defineProps, defineEmits} from "vue";
 import Icon from "@/components/Icon/index.vue";
-
 const props = defineProps({
   modelValue: {
     type: [String, Number]
@@ -12,7 +11,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: 'default'
+    default: 'sm'
   },
   rounded: {
     type: Boolean,

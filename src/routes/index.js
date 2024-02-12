@@ -4,6 +4,7 @@ import {createRouter, createWebHashHistory} from "vue-router";
 import ButtonsPage from "@/pages/Buttons/index.vue"
 import InputePages from "@/pages/Inputes/index.vue"
 import Select from "@/pages/Selects/index.vue"
+import Switch from "@/pages/Switchs/index.vue"
 const routes = [
     {
         path: '/buttons',
@@ -14,8 +15,13 @@ const routes = [
         component: InputePages
     },
     {
-        path:'/selects',
+        path:'/Select',
         component:Select
+    },
+    {
+        path:'/switches',
+        component:Switch
+
     }
 ];
 

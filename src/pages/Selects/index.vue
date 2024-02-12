@@ -1,5 +1,5 @@
 <script setup>
-import Select from "@/components/selects/index.vue";
+import Select from "@/components/Select/index.vue";
 import {ref} from "vue"
 
 const value = ref();
