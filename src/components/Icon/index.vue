@@ -22,7 +22,7 @@ function capitalFirstCharacter(text) {
 }
 
 const icon = computed(() => {
-  return icons[capitalFirstCharacter(props.name)];
+    return icons[capitalFirstCharacter(props.name)];
 })
 
 </script>

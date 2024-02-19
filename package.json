@@ -11,6 +11,7 @@
   "dependencies": {
     "lucide-vue-next": "^0.319.0",
     "preline": "^2.0.3",
+    "vazirmatn": "^33.0.3",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
