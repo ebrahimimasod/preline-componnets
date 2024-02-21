@@ -1,58 +1,66 @@
 <script setup>
-import {ref} from "vue";
+import {ref, onMounted, computed} from "vue";
+import axios from "axios"
 
-const lists = [{
-  icon: "https://static-dl.eterex.com/icons/png/usdt_.png",
-  title: "USDT",
-  price: "56,200",
-  titleButton: "خرید",
-  link: "https://panel.eterex.com/exchange/irt/usdt",
-  turnover: "1,333,395,941.62",
-  marketSize: "-"
-  ,
-},
-  {
-    icon: "https://static-dl.eterex.com/icons/png/btc_.png",
-    title: "BTC",
-    price: "56,200",
-    titleButton: "خرید",
-    link: "https://panel.eterex.com/exchange/irt/eth",
-    turnover: "1,333,395,941.62",
-    marketSize: "25,545.58"
-  },
-  {
-    icon: "https://static-dl.eterex.com/icons/png/eth_.png",
-    title: "ETH",
-    price: "56,200",
-    titleButton: "خرید",
-    link: "https://panel.eterex.com/exchange/irt/bnb",
-    turnover: "1,333,395,941.62",
-    marketSize: "25,545.58"
-  },
-  {
-    icon: "https://static-dl.eterex.com/icons/png/btc_.png",
-    title: "BTC",
-    price: "56,200",
-    titleButton: "خرید",
-    link: "https://panel.eterex.com/exchange/irt/xrp",
-    turnover: "1,333,395,941.62",
-    marketSize: "25,545.58"
-  },
-  {
-    icon: "https://static-dl.eterex.com/icons/png/eth_.png",
-    title: "ETH",
-    price: "56,200",
-    titleButton: "خرید",
-    link: "https://panel.eterex.com/exchange/irt/xrp",
-    turnover: "1,333,395,941.62",
-    marketSize: "25,545.58"
-  },
+const list = ref([]) // این ارایع پر میشه توسط api
 
+const config = ref();
 
-]
-
+const keyword = ref()
 
 const type = ref("dollar"); //toman
+
+const loading = ref(true)
+
+async function fetchAssets() {
+
+  const res = await axios.get("https://publicv2.stage.eterex.net/public/api/assets/price/list")
+
+  list.value = res.data.map(item => {
+
+    const icon = item.symbol.replace("USDT", "").toLowerCase();
+
+    const usdtPrice = Number(item.price).toFixed(4);//usdt تتر
+
+    const irtPrice = usdtPrice * config.value;//تومان
+
+    return {
+      icon: "https://static-dl.eterex.com/icons/png/" + icon + "_.png",
+      title: icon.toUpperCase(),
+      usdtPrice,//USDT//dollar
+      irtPrice,
+      titleButton: "خرید",
+      link: `https://panel.eterex.com/exchange/irt/${icon}`,
+      turnover: "1,333,395,941.62",
+      marketSize: "-"
+    }
+  })
+}
+
+async function fetchConfig() {
+  const res = await axios.get("https://api.stage.eterex.net/api/Configs/v2")
+  config.value = res.data.assetPrices[0].toIrt
+
+}
+
+const listFiltered = computed(() => {
+
+  if (keyword.value) {
+    return list.value.filter(item => {
+      return item.title.includes(String(keyword.value).toUpperCase())
+    })
+  }
+
+  return list.value;
+})
+
+
+onMounted(async () => {
+  loading.value = true;
+  await fetchConfig()
+  await fetchAssets()
+  loading.value = false;
+})
 
 
 </script>
@@ -89,9 +97,12 @@ const type = ref("dollar"); //toman
 
         <div class="w-full md:col-span-3 md:order-1">
           <input
-                 class="py-3 w-full px-4 block   border border-[#0934f3] rounded-3xl text-sm !ring-0  focus:border-primary-600 disabled:opacity-50    "
-                 type="text"
-                 placeholder="جستجو...."/>
+              v-model="keyword"
+              class="py-3 w-full px-4 block   border border-[#0934f3] rounded-3xl text-sm !ring-0  focus:border-primary-600 disabled:opacity-50    "
+              type="text"
+              placeholder="جستجو...."/>
+          {{ console.log(keyword) }}
+
         </div>
       </div>
 
@@ -112,51 +123,73 @@ const type = ref("dollar"); //toman
         </div>
       </div>
 
-      <div id="table" v-for="item in lists"
-           class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center bg-[#fff] relative py-3 px-4 border border-gray-100 rounded-lg mt-2 ">
+      <template v-if="loading">
+       <span >
+loading
+       </span>
+      </template>
 
-        <div class="flex justify-start">
-          <img class="w-5" alt="icon" :src="item.icon"/>
-          <a href="https://eterex.com/markets"><h4 class="text-[#000] text-xs font-bold mr-2">{{ item.title }}</h4></a>
+      <template v-else>
+
+        <div id="table"
+             v-for="item in listFiltered"
+             class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 items-center bg-[#fff] relative py-3 px-4 border border-gray-100 rounded-lg mt-2 ">
+
+          <div class="flex justify-start">
+            <img class="w-5" alt="icon" :src="item.icon"/>
+            <a href="https://eterex.com/markets"><h4 class="text-[#000] text-xs font-bold mr-2">{{ item.title }}</h4>
+            </a>
+          </div>
+
+          <div class="justify-center hidden md:hidden lg:flex ">
+            <span class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.turnover }}</span>
+
+          </div>
+          <div class="lg:flex justify-center hidden md:hidden ">
+            <span class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{
+                item.marketSize
+              }}</span>
+
+          </div>
+          <div>
+          <span v-if="type === 'toman' "
+                class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.irtPrice }}</span>
+
+            <span v-if="type === 'dollar' "
+                  class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.usdtPrice }}</span>
+          </div>
+
+
+          <div class="justify-end hidden md:flex">
+            <a :href="item.link"
+               class="bg-[#233 240 252] rounded-lg bg-gray-100 text-[#0934f3] text-xs font-bold p-3">
+              اطلاعات بیشتر
+            </a>
+          </div>
+
+
+          <div class="flex justify-end">
+            <a :href="item.link"
+               class="bg-[#233 240 252] rounded-lg bg-gray-100 text-[#0934f3] text-xs font-bold p-3">{{
+                item.titleButton
+              }}
+            </a>
+          </div>
+
+
         </div>
 
-        <div class="justify-center hidden md:hidden lg:flex ">
-          <span class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.turnover }}</span>
-
-        </div>
-        <div class="lg:flex justify-center hidden md:hidden ">
-          <span class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.marketSize }}</span>
-
-        </div>
-
-        <div>
-          <span class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.price }}</span>
-
-        </div>
+      </template>
 
 
-        <div class="justify-end hidden md:flex">
-          <a :href="item.link"
-             class="bg-[#233 240 252] rounded-lg bg-gray-100 text-[#0934f3] text-xs font-bold p-3">
-            اطلاعات بیشتر
-          </a>
-        </div>
-
-
-        <div class="flex justify-end">
-          <a :href="item.link"
-             class="bg-[#233 240 252] rounded-lg bg-gray-100 text-[#0934f3] text-xs font-bold p-3">{{
-              item.titleButton
-            }}
-          </a>
-        </div>
-
-
-      </div>
     </div>
 
 
   </div>
 </template>
+<style>
+
+
+</style>
 
 
