@@ -8,6 +8,10 @@ import Switch from "@/pages/Switchs/index.vue"
 import About from "@/pages/About/index.vue"
 import Contactus from '@/pages/Contactus/index.vue'
 import Markets from '@/pages/Markets/index.vue'
+import Blog from '@/pages/Blog/index.vue'
+
+
+
 const routes = [
     {
         path: '/buttons',
@@ -36,9 +40,14 @@ const routes = [
 
     },
     {
-        patch:'/markets',
+        path:'/markets',
         component:Markets
+    },
+    {
+        path: '/blog',
+        component: Blog
     }
+
 ];
 
 

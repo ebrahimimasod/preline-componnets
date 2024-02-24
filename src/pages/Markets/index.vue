@@ -1,10 +1,14 @@
 <script setup>
 import {ref, onMounted, computed} from "vue";
 import axios from "axios"
+import Buttons from "@/components/Button/index.vue"
+import Icon from "@/components/Icon/index.vue"
 
 const list = ref([]) // این ارایع پر میشه توسط api
 
 const config = ref();
+
+const pageNumber = ref(1)
 
 const keyword = ref()
 
@@ -51,9 +55,8 @@ const listFiltered = computed(() => {
     })
   }
 
-  return list.value;
+  return list.value.slice(0, pageNumber.value * 20);
 })
-
 
 onMounted(async () => {
   loading.value = true;
@@ -61,7 +64,6 @@ onMounted(async () => {
   await fetchAssets()
   loading.value = false;
 })
-
 
 </script>
 
@@ -124,9 +126,14 @@ onMounted(async () => {
       </div>
 
       <template v-if="loading">
-       <span >
-loading
-       </span>
+        <div class="flex  justify-center mt-20">
+          <svg class="animate-spin h-36 w-36 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+               viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
       </template>
 
       <template v-else>
@@ -156,7 +163,9 @@ loading
                 class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.irtPrice }}</span>
 
             <span v-if="type === 'dollar' "
-                  class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{ item.usdtPrice }}</span>
+                  class="text-xs font-semibold text-center text-[#000]  cursor-pointer mr-20">{{
+                item.usdtPrice
+              }}</span>
           </div>
 
 
@@ -179,11 +188,23 @@ loading
 
         </div>
 
+
+        <div
+             class="flex justify-center mt-5">
+          <Buttons
+              class="m-auto"
+              @click="pageNumber++" outlined variant="primary">
+            <Icon name="arrowDownFromLine"/>
+            موارد بیشتر
+
+          </Buttons>
+        </div>
+
       </template>
 
 
-    </div>
 
+    </div>
 
   </div>
 </template>
