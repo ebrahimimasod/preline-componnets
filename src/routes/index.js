@@ -9,6 +9,7 @@ import About from "@/pages/About/index.vue"
 import Contactus from '@/pages/Contactus/index.vue'
 import Markets from '@/pages/Markets/index.vue'
 import Blog from '@/pages/Blog/index.vue'
+import Map from '@/components/map/index.vue'
 
 
 
@@ -46,6 +47,10 @@ const routes = [
     {
         path: '/blog',
         component: Blog
+    },
+    {
+        path: '/map',
+        component: Map
     }
 
 ];
